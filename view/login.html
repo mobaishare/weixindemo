@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录页</title>
+	<script src="/view/static/js/vue.js"></script>
+</head>
+<body>
+	<div id="app" class="content">
+		<label for="">
+			<span>帐号：</span>
+			<input v-model="username" type="text" >
+		</label>
+		<label for="">
+			<span>帐号：</span>
+			<input type="password" v-model="password">
+		</label>
+		<button @click="but">登陆</button>
+	</div>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.1/jquery.js"></script>
+<script type="text/javascript">
+	var app = new Vue({
+		el: '#app',
+		data:{
+			username:'',
+			password:''
+		},
+		methods:{
+			but:function(){
+				$.post('/login.php?login=post',{
+					username:username,
+					password:password
+				},function(data,status){
+					console.log(data);
+				});
+			}
+		}
+
+	})
+</script>
+</body>
+</html>
